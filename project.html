@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ClosetIQ - Smart Wardrobe Demo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="font-sans text-gray-800">
+
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-r from-indigo-500 to-purple-500 text-white h-screen flex flex-col justify-center items-center text-center px-4">
+    <h1 class="text-4xl md:text-6xl font-bold mb-4">ClosetIQ</h1>
+    <p class="text-xl md:text-2xl mb-6">Smart Wardrobe, Smarter You</p>
+    <a href="#demo" class="bg-white text-indigo-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-200 transition">Try Demo</a>
+  </section>
+
+  <!-- Mini Closet Demo Section -->
+  <section id="demo" class="py-20 px-4 bg-gray-100">
+    <h2 class="text-3xl font-bold text-center mb-12">Your Mini Closet</h2>
+    <p class="text-center mb-8">Click “Generate Outfit” to see a random outfit suggestion!</p>
+    
+    <!-- Closet Grid -->
+    <div id="closet" class="grid grid-cols-3 md:grid-cols-6 gap-4 max-w-4xl mx-auto mb-6">
+      <!-- Sample clothing images -->
+      <img src="https://img.icons8.com/color/96/t-shirt.png" alt="T-Shirt" class="closet-item cursor-pointer hover:scale-105 transition">
+      <img src="https://img.icons8.com/color/96/jeans.png" alt="Jeans" class="closet-item cursor-pointer hover:scale-105 transition">
+      <img src="https://img.icons8.com/color/96/jacket.png" alt="Jacket" class="closet-item cursor-pointer hover:scale-105 transition">
+      <img src="https://img.icons8.com/color/96/dress.png" alt="Dress" class="closet-item cursor-pointer hover:scale-105 transition">
+      <img src="https://img.icons8.com/color/96/skirt.png" alt="Skirt" class="closet-item cursor-pointer hover:scale-105 transition">
+      <img src="https://img.icons8.com/color/96/shoes.png" alt="Shoes" class="closet-item cursor-pointer hover:scale-105 transition">
+    </div>
+
+    <!-- Outfit Generator Button -->
+    <div class="text-center mb-8">
+      <button id="generateOutfit" class="bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition">
+        Generate Outfit
+      </button>
+    </div>
+
+    <!-- Outfit Result -->
+    <div id="outfitResult" class="text-center text-xl font-semibold text-indigo-600"></div>
+  </section>
+
+  <!-- Email Sign-Up Section -->
+  <section id="signup" class="py-20 px-4 text-center">
+    <h2 class="text-3xl font-bold mb-6">Sign up to get ClosetIQ!</h2>
+    <p class="mb-6">Enter your email to be notified when the full product launches.</p>
+
+    <form action="https://formspree.io/f/xvzvkvaw" method="POST" class="max-w-md mx-auto flex flex-col gap-4">
+      <input type="hidden" name="_next" value="thank-you.html">
+      <input type="email" name="email" placeholder="Enter your email" required
+             class="px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+      <button type="submit" class="bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition">
+        Sign Up
+      </button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-6 text-center">
+    <p>© 2026 ClosetIQ. All rights reserved.</p>
+    <p>Contact: <a href="mailto:info@closetiq.com" class="underline">info@closetiq.com</a></p>
+  </footer>
+
+  <!-- JavaScript for Outfit Generator -->
+  <script>
+    const closetItems = [
+      "T-Shirt", "Jeans", "Jacket", "Dress", "Skirt", "Shoes"
+    ];
+
+    const generateBtn = document.getElementById("generateOutfit");
+    const outfitResult = document.getElementById("outfitResult");
+
+    generateBtn.addEventListener("click", () => {
+      // Pick 2 random items for outfit
+      let first = closetItems[Math.floor(Math.random() * closetItems.length)];
+      let second = closetItems[Math.floor(Math.random() * closetItems.length)];
+
+      outfitResult.textContent = `How about wearing: ${first} + ${second}?`;
+    });
+  </script>
+
+</body>
+</html>
